@@ -28,7 +28,7 @@ class Book():
 
 def get_goodreads_csv(filename):
     
-    file = open("goodreads_library_export.csv") # filename
+    file = open(filename)
 
     csvReader = csv.reader(file)
 
@@ -51,8 +51,5 @@ def get_goodreads_csv(filename):
                 rat = row[7]
         book = Book(tit, auth, " ", rat)
         bookshelf.append(book)
-
-    print(bookshelf[0])
-    print(bookshelf[1])
-
+        
     file.close()
