@@ -1,4 +1,5 @@
 import csv
+import pandas as pd
 
 class Book():
     def __init__(self, title, author, genre, rating):        
@@ -21,38 +22,26 @@ class Book():
     
     def set_rating(self, rating=None):
         self.rating = rating
+        
+    def set_genre(self, genre=None):
+        self.genre = genre
     
     def __str__(self):
+        # TODO: Change the wording of this
         return "% s by % s with a rating of % s from you." % (self.title, self.author, self.rating)
     
 
 def get_goodreads_csv(filename):
     
-    file = open("goodreads_library_export.csv") # filename
-
-    csvReader = csv.reader(file)
-
-    header = []
-    header = next(csvReader)
-
-    rows = []
-    for row in csvReader:
-        rows.append(row)
-        
+    df = pd.read_csv(filename)
+    
     bookshelf = []
-
-    for row in rows:
-        for head in header:
-            if head == "Author":
-                auth = row[2]
-            if head == "Title":
-                tit = row[1]
-            if head == "My Rating":
-                rat = row[7]
-        book = Book(tit, auth, " ", rat)
+    for i in range(len(df)):
+        book = Book(df['Title'][i], df['Author'][i], " ", df['My Rating'][i])
         bookshelf.append(book)
+    
+    return bookshelf
+    
+bookshelf = get_goodreads_csv("goodreads_library_export.csv")
 
-    print(bookshelf[0])
-    print(bookshelf[1])
-
-    file.close()
+print(bookshelf[0])
