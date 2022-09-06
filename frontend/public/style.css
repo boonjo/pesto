@@ -1,0 +1,41 @@
+pesto {
+    box-sizing: border-box;
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+
+    position: absolute;
+    width: 423px;
+    height: 144px;
+    left: 0px;
+    top: 0px;
+
+    border-width: 0px 1px 1px 0px;
+    border-style: solid;
+    border-color: #000000;
+
+    /* PESTO */
+
+    width: 282px;
+    height: 116px;
+
+    font-family: 'Abhaya Libre';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 98px;
+    line-height: 116px;
+    /* identical to box height */
+
+    color: #000000;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
